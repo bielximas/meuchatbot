@@ -1,12 +1,11 @@
 const QRCode = require('qrcode');
-const { Client, Buttons, List, MessageMedia } = require('whatsapp-web.js'); // Mudança Buttons
+const { Client, Buttons, List, MessageMedia } = require('whatsapp-web.js');
 const client = new Client();
-
-// serviço de leitura do qr code
 client.on('qr', async (qr) => {
-    const qrImageBase64 = await QRCode.toDataURL(qr);
-    console.log('QR Code em imagem base64:\n', qrImageBase64);
+  const qrImageBase64 = await QRCode.toDataURL(qr);
+  console.log('QR Code em imagem base64:\n' + qrImageBase64);
 });
+
 
 // apos isso ele diz que foi tudo certo
 client.on('ready', () => {
@@ -125,3 +124,4 @@ client.on('message', async msg => {
         await client.sendMessage(numero, '❌ Não entendi esse comando. Caso queira ser atendido, basta digitar "falar com atendente".');
     }
 });
+
